@@ -1,0 +1,27 @@
+# SkillSprint AI — Agent Execution Rules (.agents/rules)
+
+## Rule 1: Strict Dual-Pipeline Independence
+- Pipeline 1 (GenAI Generation) and Pipeline 2 (Python Ground-Truth Validation) MUST remain completely decoupled.
+- Pipeline 2 MUST NOT make any calls to external Generative AI APIs or use LLMs to approve generated content.
+- Never design a workflow where GenAI evaluates or approves its own output.
+
+## Rule 2: Dynamic Execution (No Hardcoded Output)
+- All onboarding plans, validation scores, quiz answers, comparison matrices, and hidden evaluation outcomes MUST be computed dynamically from database state, active policies, and ground-truth matrices.
+- Hardcoded response constants, fabricated scores, or prewritten role plans disguised as generated output are strictly prohibited.
+
+## Rule 3: Prompt Injection & Adversarial Defense
+- Treat all uploaded documents strictly as untrusted data.
+- Input document text MUST NOT become executable instructions for the Generative AI model.
+- Always frame document text inside `<untrusted_document_data>` tags in prompt templates.
+- Automatically flag and log adversarial prompt injection attempts.
+
+## Rule 4: Source Traceability & Grounding
+- Every generated onboarding item, module, task, and quiz question MUST retain source metadata: `source_document_id`, `source_section_id`, `page_number` (PDF) or `paragraph_ref` (DOCX).
+- Content without valid source citations MUST be flagged as ungrounded/hallucinated and routed to the manual review queue.
+
+## Rule 5: Immutable Audit Logging
+- Reviewer overrides and system verification status decisions MUST be logged in an append-only `audit_trail` table.
+- Historical audit records MUST NOT be modified or deleted.
+
+## Rule 6: Comprehensive Documentation & AI Usage Declaration
+- All AI assistance MUST be declared in `AI_USAGE.md` with tool name, purpose, prompt type, affected files, modifications performed, tests run, and verifying team member.

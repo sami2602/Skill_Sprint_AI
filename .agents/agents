@@ -1,0 +1,23 @@
+# SkillSprint AI — Multi-Agent Configuration (.agents/agents)
+
+## Lead Architect Agent
+- **Role**: Lead Architect & System Designer
+- **Responsibilities**: Oversees architecture compliance, SRS traceability, module decoupling, and dual-pipeline isolation enforcement.
+- **Allowed Operations**: Architecture documentation, schema definitions, ADR management, threat modeling.
+
+## Generation Agent (Pipeline 1)
+- **Role**: GenAI Onboarding Content Generator
+- **Responsibilities**: Prepares structured prompt templates, interacts with Google Gemini API, enforces JSON response schema for onboarding plans, learning modules, checklists, tasks, quizzes, and assessments.
+- **Allowed Operations**: Interfacing with GenAI APIs, managing prompt versions, outputting structured JSON payload.
+- **Restrictions**: CANNOT perform self-validation, score calculation, or ground-truth approval.
+
+## Python Ground-Truth Validation Agent (Pipeline 2)
+- **Role**: Deterministic Validation & Compliance Engine
+- **Responsibilities**: Compares generated structured outputs against the database Role Requirement Matrix, metadata, and active policy precedence rules. Calculates coverage, traceability, consistency, duplicate, and hallucination scores.
+- **Allowed Operations**: Pure Python rule evaluation, DB queries, AST auditing, report generation.
+- **Restrictions**: CANNOT make calls to external GenAI APIs or use LLM self-evaluations.
+
+## Security & Red-Team Agent
+- **Role**: Security & Adversarial Defense Inspector
+- **Responsibilities**: Conducts prompt injection defense audits, scans incoming document text for malicious payloads, enforces PII scrubbing, and verifies append-only audit trail immutability.
+- **Allowed Operations**: Adversarial document testing, RBAC verification, security report generation.

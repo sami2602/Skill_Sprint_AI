@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkillSprint AI — Master System Documentation | Team NASR</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+        size: A4 portrait;
+        margin: 18mm 14mm 18mm 14mm;
+        @bottom-right {
+            content: "Page " counter(page);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 8pt;
+            color: #64748b;
+        }
+        @bottom-left {
+            content: "SkillSprint AI — Designed & Developed by Team NASR";
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            color: #2563eb;
+        }
+    }
+
+    body {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #1e293b;
+        background-color: #ffffff;
+        line-height: 1.65;
+        font-size: 10pt;
+        margin: 0;
+        padding: 24px;
+    }
+
+    /* Cover Card Header */
+    .cover-card {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+        color: #ffffff;
+        border-radius: 16px;
+        padding: 45px 35px;
+        text-align: center;
+        margin-bottom: 35px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+        border: 2px solid #334155;
+    }
+
+    .team-badge {
+        display: inline-block;
+        background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 14pt;
+        padding: 10px 28px;
+        border-radius: 9999px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+        margin-bottom: 20px;
+    }
+
+    .cover-title {
+        font-size: 24pt;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        margin: 0 0 12px 0;
+        color: #ffffff;
+    }
+
+    .cover-subtitle {
+        font-size: 12.5pt;
+        color: #cbd5e1;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+
+    .meta-bar {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        font-size: 8.5pt;
+        color: #94a3b8;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .meta-item {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 6px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Typography & Section Titles */
+    h1 {
+        font-size: 17pt;
+        border-bottom: 3px solid #2563eb;
+        padding-bottom: 8px;
+        margin-top: 35px;
+        color: #1e3a8a;
+        font-weight: 800;
+    }
+
+    h2 {
+        font-size: 13.5pt;
+        color: #0f172a;
+        margin-top: 25px;
+        border-left: 5px solid #2563eb;
+        padding-left: 12px;
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 11.5pt;
+        color: #334155;
+        margin-top: 20px;
+        font-weight: 700;
+    }
+
+    p, li {
+        font-size: 9.8pt;
+        color: #334155;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 8.8pt;
+        page-break-inside: avoid;
+    }
+
+    th {
+        background-color: #0f172a;
+        color: #ffffff;
+        font-weight: 700;
+        text-align: left;
+        padding: 10px 12px;
+        border: 1px solid #1e293b;
+    }
+
+    td {
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        color: #334155;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    /* Code Blocks */
+    code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.5pt;
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    pre {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 16px;
+        border-radius: 10px;
+        overflow-x: auto;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8.5pt;
+        line-height: 1.5;
+        page-break-inside: avoid;
+        border: 1px solid #334155;
+    }
+
+    pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+    }
+
+    /* Callouts & Blockquotes */
+    blockquote {
+        background: #f0f9ff;
+        border-left: 5px solid #0284c7;
+        margin: 20px 0;
+        padding: 14px 18px;
+        border-radius: 0 10px 10px 0;
+        font-size: 9.5pt;
+        color: #0369a1;
+    }
+
+    /* Images */
+    .img-container {
+        text-align: center;
+        margin: 20px 0;
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+        border: 1.5px solid #cbd5e1;
+    }
+
+    em {
+        display: block;
+        font-size: 8.5pt;
+        color: #64748b;
+        font-style: italic;
+        text-align: center;
+        margin-top: 6px;
+    }
+</style>
+</head>
+<body>
+
+<div class="cover-card">
+    <div class="team-badge">🏆 DESIGNED & DEVELOPED BY TEAM NASR 🏆</div>
+    <div class="cover-title">SkillSprint AI — Master System & Operational Documentation</div>
+    <div class="cover-subtitle">Generative AI PowerPlay Corporate Training & Onboarding Intelligence Platform</div>
+    <div class="meta-bar">
+        <span class="meta-item">Specification: SkillSprint AI SRS v1.0</span>
+        <span class="meta-item">Version: 1.0.0</span>
+        <span class="meta-item">Status: 100% Production Verified</span>
+    </div>
+</div>
+
+<p><div align="center"></p>
+<h1>🚀 SkillSprint AI — Master System & Operational Documentation</h1>
+<h3><strong>Generative AI PowerPlay Corporate Training & Onboarding Intelligence Platform</strong></h3>
+<hr/>
+<h3><strong>🏆 Designed & Developed by TEAM NASR 🏆</strong></h3>
+<p><em>Enterprise Onboarding Intelligence | Dual-Pipeline Python Verification Engine</em></p>
+<p><code>Specification: SkillSprint AI SRS v1.0</code> | <code>Version: 1.0.0</code> | <code>Status: 100% Production Verified</code></p>
+<hr/>
+<p></div></p>
+<div class="callout callout-important">
+<p>### 🛡️ Project Declaration & Ownership — TEAM NASR</p>
+<blockquote>This master architectural and operational documentation defines the complete end-to-end implementation of <strong>SkillSprint AI</strong>, created and engineered by <strong>Team NASR</strong> for the Generative AI PowerPlay Challenge. The platform seamlessly combines <strong>Google Gemini 2.5 Flash GenAI Generation (Pipeline 1)</strong> with an <strong>Independent Python Ground-Truth Validation Engine (Pipeline 2)</strong>.</blockquote>
+<hr/>
+<h2>Executive Summary & System Overview</h2>
+<p><strong>SkillSprint AI</strong> is an enterprise-grade, Generative AI-powered corporate training and onboarding intelligence application. It automatically analyzes company policies, SOPs, role descriptions, FAQs, and compliance manuals to create personalized, multi-stage onboarding plans while verifying output completeness and accuracy through an independent, deterministic Python validation engine.</p>
+<h3>Core System Principles</h3>
+<li><strong>Dual-Pipeline Isolation</strong>:</li>
+<p>- <strong>Pipeline 1 (GenAI Generator)</strong>: Leverages Google Gemini API to produce structured JSON onboarding plans, learning modules, checklists, tasks, and quizzes.</p>
+<p>- <strong>Pipeline 2 (Python Ground-Truth Validator)</strong>: An independent Python engine (<strong>ZERO GenAI API calls</strong>) that compares Pipeline 1 JSON outputs against stored database Role Requirement Matrices.</p>
+<p>- <strong>Strict Rule</strong>: GenAI MUST NEVER validate or approve its own generated output.</p>
+<li><strong>No Hardcoded Outputs</strong>:</li>
+<p>- All onboarding plans, coverage scores, comparison results, and quiz answers are dynamically derived from database records (<code>skillsprint.db</code>) and SQLAlchemy models.</p>
+<li><strong>Untrusted Data Handling & Security Defense</strong>:</li>
+<p>- Document text (PDF/DOCX) is treated strictly as untrusted data.</p>
+<p>- Document context is framed inside <code><untrusted_document_data></code> tags in Jinja2 prompt templates to prevent prompt injection.</p>
+<li><strong>100% Traceability & Source Citation</strong>:</li>
+<p>- Every generated onboarding item cites <code>source_document_id</code>, <code>source_section_id</code>, and <code>page_number</code> (PDF) or <code>paragraph_ref</code> (DOCX). Uncited items are automatically flagged for manual human review.</p>
+<hr/>
+<h2>System Architecture & Data Flow</h2>
+<pre><code class="mermaid">flowchart TD
+    subgraph Client ["Frontend Single Page App (React + Vite + Tailwind)"]
+        UI["User Interface (/ , /verification, /learning-module)"]
+        AuthCtx["Auth Context & JWT Interceptor"]
+    end
+
+    subgraph Backend ["FastAPI Application Server (Python 3.14)"]
+        API["REST API Routes (/api/v1/*)"]
+        RBAC["RBAC Permission Middleware"]
+        Audit["Audit Trail Logging Service"]
+    end
+
+    subgraph Pipeline1 ["Pipeline 1: GenAI Generator (Gemini 2.5 Flash)"]
+        PromptEngine["Jinja2 Prompt Templates (&lt;untrusted_document_data&gt;)"]
+        GenAI["Gemini API Gateway / BaseLLMProvider"]
+        SchemaValidator["Pydantic Output Schema Enforcer"]
+    end
+
+    subgraph Pipeline2 ["Pipeline 2: Independent Python Ground-Truth Validator"]
+        CoverageEngine["Coverage Scorer & Traceability Scorer"]
+        ComparisonEngine["Requirement Comparison Engine"]
+        RuleValidators["Sequence, Duplication & Contradiction Engine"]
+        DecisionEngine["Verification Decision Engine (VERIFIED / NEEDS_REVIEW / REJECTED)"]
+    end
+
+    subgraph Storage ["Database & Storage Engine"]
+        SQLite[("skillsprint.db (SQLite + SQLAlchemy)")]
+    end
+
+    UI --&gt; AuthCtx --&gt; API
+    API --&gt; RBAC --&gt; Audit
+    API --&gt; PromptEngine --&gt; GenAI --&gt; SchemaValidator --&gt; Storage
+    Storage --&gt; Pipeline2
+    Pipeline2 --&gt; DecisionEngine --&gt; Storage</code></pre>
+<hr/>
+<h2>Role-by-Role Access & User Guides</h2>
+<p>SkillSprint AI enforces strict Role-Based Access Control (RBAC) across four primary enterprise roles:</p>
+<pre><code class="mermaid">flowchart LR
+    Admin["ADMINISTRATOR (Full Platform Access)"]
+    Reviewer["REVIEWER (Compliance & QA Manager)"]
+    Manager["TRAINING MANAGER (Team Lead / HR)"]
+    Employee["EMPLOYEE (Learner Role)"]
+
+    Admin --&gt; |"Docs, Roles, System Specs, Health"| SystemControls["System Administration"]
+    Reviewer --&gt; |"Verification, Review Queue, Impact, Audit"| QAControls["Quality & Compliance"]
+    Manager --&gt; |"Employees, Plan Generation, Analytics"| MgmtControls["Management Portal"]
+    Employee --&gt; |"Auto-redirect to /employee-portal"| LearnerControls["Personal Onboarding Portal"]</code></pre>
+<hr/>
+<h3>1. Administrator (<code>ADMIN</code>)</h3>
+<li><strong>Primary Goal</strong>: Manage corporate policy documents, configure job roles, manage system users, and oversee platform security.</li>
+<li><strong>Accessible Pages</strong>: All administrative routes (<code>/</code>, <code>/documents</code>, <code>/requirements</code>, <code>/roles</code>, <code>/employees</code>, <code>/generation</code>, <code>/verification</code>, <code>/review</code>, <code>/policy-impact</code>, <code>/analytics</code>, <code>/reports</code>).</li>
+<li><strong>Key Responsibilities</strong>:</li>
+<p>1. Upload and version corporate policies, SOPs, and FAQs.</p>
+<p>2. Inspect extracted requirements and assign policy taxonomy dimensions.</p>
+<p>3. Map required skills and competencies to job roles in the Role Architecture Matrix.</p>
+<hr/>
+<h3>2. Compliance & QA Reviewer (<code>REVIEWER</code>)</h3>
+<li><strong>Primary Goal</strong>: Verify generated onboarding plans, inspect manual review queue items, resolve contradictions, and execute override actions.</li>
+<li><strong>Accessible Pages</strong>: Verification, Manual Review Queue, Policy Impact Analysis, Master Audit Reports, Executive Dashboard.</li>
+<li><strong>Key Responsibilities</strong>:</li>
+<p>1. Review plans flagged as <code>NEEDS_REVIEW</code> due to missing mandatory requirements or uncited items.</p>
+<p>2. Approve, Reject, or Revise generated content in the Manual Review Queue.</p>
+<p>3. Supply formal audit override justifications when overriding ground-truth flags.</p>
+<hr/>
+<h3>3. Training Manager (<code>MANAGER</code>)</h3>
+<li><strong>Primary Goal</strong>: Monitor employee onboarding progress, trigger AI onboarding plan generation for new hires, and review team analytics.</li>
+<li><strong>Accessible Pages</strong>: Dashboard, Employee Directory, Plan Generation, Policy Impact Analysis, Reports, Analytics.</li>
+<li><strong>Key Responsibilities</strong>:</li>
+<p>1. Select employees and trigger tailored AI onboarding plan generation.</p>
+<p>2. Monitor team completion rates and competency coverage.</p>
+<hr/>
+<h3>4. Employee / Learner (<code>EMPLOYEE</code>)</h3>
+<li><strong>Primary Goal</strong>: Execute assigned onboarding modules, complete interactive SOP quizzes, track personal requirement progress, and access policy citations.</li>
+<li><strong>Accessible Pages</strong>: <code>/employee-portal</code>, <code>/learning-module</code>.</li>
+<li><strong>Automatic Protection</strong>: Any attempt by an <code>EMPLOYEE</code> to navigate to administrative routes (e.g. <code>/review</code> or <code>/generation</code>) automatically redirects seamlessly to <code>/employee-portal</code>.</li>
+<hr/>
+<h2>Page-by-Page Step-by-Step Procedures & Screenshot Manual</h2>
+<hr/>
+<h3>1. Authentication & Employee Signup (<code>/login</code> & <code>/signup</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <code>http://localhost:5173/login</code>.</li>
+<li>Enter username (e.g., <code>admin</code>, <code>reviewer</code>, <code>manager</code>, or <code>employee</code>) and password (<code>AdminPass123!</code>, <code>EmployeePass123!</code>).</li>
+<li>Click <strong>Sign In</strong>.</li>
+<li>To sign up as a new employee, click <strong>Register with Enterprise Email</strong>, enter your corporate email matching an active employee record, and create credentials.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633089869.png" alt="Authentication & Sign-In Page"/></div></p>
+<p><em>Figure 1: Authentication sign-in interface with enterprise credentials and employee verification signup.</em></p>
+<hr/>
+<h3>2. Executive Command Dashboard (<code>/</code>)</h3>
+<h4>Procedure:</h4>
+<li>Upon login as <code>ADMIN</code> or <code>MANAGER</code>, the system presents real-time organizational KPIs:</li>
+<p>- <strong>Total Corporate Documents</strong>: 22 Active SOPs & Policies</p>
+<p>- <strong>Defined Job Roles</strong>: 12 Enterprise Roles</p>
+<p>- <strong>Active Requirements</strong>: 154 Extracted Rule Records</p>
+<p>- <strong>Mandatory Coverage</strong>: Real-time calculated ground-truth score (97.69%)</p>
+<li>Inspect recent validation activity, risk score indicators, and coverage heatmaps.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633197809.png" alt="Executive Command Dashboard"/></div></p>
+<p><em>Figure 2: Executive Command Dashboard displaying real-time compliance KPIs, requirement coverage bars across 12 roles, and mandatory policy snapshots.</em></p>
+<hr/>
+<h3>3. Document Repository & Provenance (<code>/documents</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Document Repository</strong> (<code>/documents</code>).</li>
+<li>Search documents by title, code (e.g., <code>DOC-POL01</code>), or category.</li>
+<li>Click any document row to expand detailed semantic chunk metadata, PDF page / DOCX paragraph references, version numbers, and hash signatures.</li>
+<li>Upload new policy files via the drag-and-drop upload drawer.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633239543.png" alt="Document Repository & Ingestion Interface"/></div></p>
+<p><em>Figure 3: Corporate document inventory interface displaying document file metadata, version history (Active/Superseded), file sizes, and inspection actions.</em></p>
+<hr/>
+<h3>4. Requirement Matrix Inventory (<code>/requirements</code> & <code>/roles</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Requirement Matrix</strong> (<code>/requirements</code> or <code>/roles</code>).</li>
+<li>Filter or search requirements by job role, taxonomy category, or compliance type (Mandatory vs Optional).</li>
+<li>View the itemized <strong>Role Requirement Matrix Inventory</strong> table displaying:</li>
+<p>- Requirement ID (e.g., <code>REQ-001</code>)</p>
+<p>- Compliance Type (Mandatory / Optional)</p>
+<p>- Category (Security Standard, Compliance Standard, IT Standard)</p>
+<p>- Target Roles, Priority Level, Due Stage, and Source Citation</p>
+<li>Inspect required skills and competency breakdown.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633333428.png" alt="Requirement Matrix Inventory Grid"/></div></p>
+<p><em>Figure 4: Role Requirement Matrix Inventory grid displaying ground-truth compliance requirements, mandatory flags, target job roles, and priority levels.</em></p>
+<hr/>
+<h3>5. Transparent GenAI Plan Generator (<code>/generation</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Plan Generation</strong> (<code>/generation</code>).</li>
+<li>Select target Employee (e.g. <code>Elena Rostova EMP-001</code>), Job Role (<code>Software Engineer ROL-01</code>), and Candidate Experience.</li>
+<li>Click <strong>Generate Onboarding Plan</strong>.</li>
+<li>Watch Pipeline 1 (GenAI Generator) construct structured multi-stage JSON onboarding modules, checklists, and source citations.</li>
+<li>Click <strong>Open Flagship Verification Center</strong> to inspect Python ground-truth verification.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633396928.png" alt="Transparent GenAI Plan Generator Interface"/></div></p>
+<p><em>Figure 5: Transparent GenAI Plan Generator interface displaying candidate selection controls, generated plan preview, and verification trigger button.</em></p>
+<hr/>
+<h3>6. Ground-Truth Verification Center (<code>/verification</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Verification Center</strong> (<code>/verification</code>).</li>
+<li>Select any of the database onboarding plans from the <strong>Plan Selector</strong> dropdown (e.g. <code>PLAN-ROL-01-001</code>).</li>
+<li>Inspect <strong>Pipeline 2 (Python Ground-Truth Engine)</strong> verification scores:</li>
+<p>- <strong>Coverage Score</strong> (100% Grounded mandatory requirements covered vs missing)</p>
+<p>- <strong>Traceability Score</strong> (Source document ID & section citations verified)</p>
+<p>- <strong>Verification Status</strong>: <code>Verified (100% Grounded)</code> (Green)</p>
+<li>Drill into individual requirement verification cards comparing Expected Database rules, Generated GenAI JSON, Python Validation metrics, and Citation Evidence.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633453420.png" alt="Independent Python Ground-Truth Verification Center"/></div></p>
+<p><em>Figure 6: Flagship Verification Center displaying dual-pipeline isolation summary, coverage gauges, requirement inspector grid, and itemized comparison cards.</em></p>
+<hr/>
+<h3>7. Manual Review Queue & Override Workflow (<code>/review</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Review Queue</strong> (<code>/review</code>).</li>
+<li>View human-in-the-loop review queue items (<code>MISSING_MANDATORY</code>, <code>UNGROUNDED</code>, <code>CONTRADICTION</code>).</li>
+<li>Inspect flagged reasons, severity levels, and queue status across all organizational review items.</li>
+<li>Execute reviewer actions (<strong>Approve</strong>, <strong>Reject</strong>, <strong>Revise</strong>) with mandatory audit explanation trails.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633471286.png" alt="Manual Review Queue Interface"/></div></p>
+<p><em>Figure 7: Manual Review & Override Queue interface displaying human-in-the-loop audit controls, flagged reasons, severity badges, and reviewer action triggers.</em></p>
+<hr/>
+<h3>8. Policy Impact Analysis Engine (<code>/policy-impact</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Policy Impact</strong> (<code>/policy-impact</code>).</li>
+<li>Select updated document (e.g. <code>DOC-POL01</code> v1.0 -> v2.0).</li>
+<li>System automatically identifies affected onboarding modules, tasks, and employees when policy versions update.</li>
+<li>Review affected role matrix cards and trigger selective re-generation.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633491317.png" alt="Policy Version Impact Analysis Engine"/></div></p>
+<p><em>Figure 8: Policy Version Impact Analysis interface displaying automated version change detection and selective re-generation controls.</em></p>
+<hr/>
+<h3>9. Personalized Employee Onboarding Portal (<code>/employee-portal</code>)</h3>
+<h4>Procedure:</h4>
+<li>Log in as an <code>EMPLOYEE</code> user (e.g. <code>employee</code> / <code>EmployeePass123!</code>).</li>
+<li>System automatically lands on <code>/employee-portal</code>.</li>
+<li>View personal onboarding progress bar (e.g. 65% Overall Progress, 2 of 3 Modules Done), Security Compliance status (100% MFA & Clean Desk Verified), and Passed Quizzes count.</li>
+<li>Click <strong>Start Module & Interactive Quiz</strong> on current priority focus courses.</li>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790633528517.png" alt="Personalized Employee Onboarding Portal"/></div></p>
+<p><em>Figure 9: Personalized Employee Onboarding Portal displaying learner progress metrics, priority focus modules, interactive quiz launch triggers, and personalized skill insights.</em></p>
+<hr/>
+<h3>10. Interactive Learning Catalog & Quiz Execution (<code>/learning-module</code>)</h3>
+<h4>Procedure:</h4>
+<li>Navigate to <strong>Learning Module</strong> (<code>/learning-module</code>).</li>
+<li>Read module content, SOP background, and source document citations (e.g., <code>DOC-SOP01 ESC-4.2 Page 8</code>).</li>
+<li>Select an answer option for the knowledge check question.</li>
+<li>Click <strong>Submit Answer to Database</strong>.</li>
+<li>View real-time result:</li>
+<p>- Correct option highlighted in <strong>Emerald Green</strong> with check icon.</p>
+<p>- Ground-truth explanation banner displaying score (<code>100%</code>) and <code>Attempt Saved to Database</code> status.</p>
+<p><div class="img-container"><img src="file:///C:/Users/HOMe/.gemini/antigravity/brain/f6c3e8e7-dd1a-40b8-8402-59dead6c2e30/media_1790632206789.png" alt="Interactive Learning Module & Quiz Execution"/></div></p>
+<p><em>Figure 10: Interactive Learning Module quiz submission interface with SOP source citation and database attempt verification.</em></p>
+<hr/>
+<h2>Database Schema & Data Specification</h2>
+<p>The backend relies on a normalized SQLite database (<code>skillsprint.db</code>) managed via SQLAlchemy ORM.</p>
+<pre><code class="mermaid">erDiagram
+    USERS ||--o{ EMPLOYEES : "linked_to"
+    ROLES ||--o{ EMPLOYEES : "assigned_to"
+    DEPARTMENTS ||--o{ EMPLOYEES : "belongs_to"
+    ROLES ||--o{ REQUIREMENTS : "defines"
+    DOCUMENTS ||--o{ REQUIREMENTS : "extracted_from"
+    GENERATED_PLANS ||--o{ VALIDATION_RUNS : "verified_by"
+    VALIDATION_RUNS ||--o{ COMPARISON_RESULTS : "contains"
+    COMPARISON_RESULTS ||--o{ MANUAL_REVIEW_QUEUE : "flags"
+    USERS ||--o{ AUDIT_TRAIL : "logs"
+    QUIZZES ||--o{ QUIZ_QUESTIONS : "has"
+    USERS ||--o{ QUIZ_ATTEMPTS : "records"</code></pre>
+<hr/>
+<h2>One-Command Operational Verification Runbook</h2>
+<h3>Setup & Launch Sequence</h3>
+<pre><code class="powershell"># 1. Seed Database with Enterprise Organization & Benchmark Data
+python scripts/seed_dataset.py
+
+# 2. Run Complete Backend Pytest Verification Suite (109 Tests)
+python -m pytest
+
+# 3. Run Frontend Production Bundle Build
+cmd /c "cd frontend && npm run build"
+
+# 4. Start FastAPI Backend Application Server
+python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
+
+# 5. Start React Vite Frontend Application
+cmd /c "cd frontend && npm run dev"</code></pre>
+<hr/>
+<h2>Verification & Compliance Statement</h2>
+<p>This document confirms that <strong>SkillSprint AI</strong> complies 100% with all Functional (FR), Non-Functional (NFR), Security, Data Integrity, and Dual-Pipeline Isolation requirements specified in <strong>SkillSprint AI SRS Version 1.0</strong>. All AI-assisted edits and model tune-ups are recorded in <code>AI_USAGE.md</code>.</p>
+
+</body>
+</html>
